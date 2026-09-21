@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>TailorAI — Real-time Virtual Try-On</title>
+  <meta name="description" content="TailorAI is a real-time virtual shirt try-on that runs entirely in your browser. Pose estimation, One Euro smoothing and affine garment fitting — no uploads, no servers." />
+  <meta name="theme-color" content="#0a0c12" />
+  <meta property="og:title" content="TailorAI — Real-time Virtual Try-On" />
+  <meta property="og:description" content="Try shirts on with your webcam. 100% in-browser computer vision. Your video never leaves your device." />
+  <meta property="og:type" content="website" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#studio">Skip to the try-on studio</a>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#top" aria-label="TailorAI home">
+        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/icons/icon.svg#mark"/></svg>
+        <span>Tailor<b>AI</b></span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#studio">Studio</a>
+        <a href="#how">How it works</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+      <a class="btn btn-ghost sm" data-link="github" href="#" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+      <div class="hero-in">
+        <p class="eyebrow"><span class="dot"></span> Computer vision · runs 100% in your browser</p>
+        <h1>Try it on before<br />you <span class="grad">buy it.</span></h1>
+        <p class="lead">TailorAI fits garments to your body in real time. Pose estimation finds your shoulders and hips, adaptive filtering keeps the fit steady, and an affine model scales, rotates and stretches the shirt to match you.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#studio" id="ctaStudio">Launch the studio</a>
+          <button class="btn btn-ghost" id="ctaDemo" type="button">Watch a 10-second demo</button>
+        </div>
+        <ul class="badges" aria-label="Highlights">
+          <li>MediaPipe Pose · 33 landmarks</li>
+          <li>One Euro smoothing</li>
+          <li>No server · no uploads</li>
+          <li>Installable PWA</li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <img class="a1" src="assets/shirts/tee-crimson.svg" alt="" />
+        <img class="a2" src="assets/shirts/polo-teal.svg" alt="" />
+        <img class="a3" src="assets/shirts/stripe-breton.svg" alt="" />
+        <span class="scan"></span>
+      </div>
+      </div>
+    </section>
+
+    <!-- STUDIO -->
+    <section id="studio" class="studio" aria-labelledby="studioTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="studioTitle">The studio</h2>
+          <p>Use your camera, a demo mannequin, or upload a photo. Keys: <kbd>A</kbd>/<kbd>D</kbd> change shirt · <kbd>S</kbd> snapshot · <kbd>K</kbd> skeleton · <kbd>M</kbd> mirror · <kbd>F</kbd> fullscreen</p>
+        </div>
+
+        <div class="studio-grid">
+          <div class="stage-col">
+            <div class="stage" id="stage">
+              <canvas id="output" width="1280" height="720" aria-label="Virtual try-on preview"></canvas>
+              <video id="video" playsinline muted hidden></video>
+
+              <div class="hud" id="hud" hidden>
+                <span class="chip" id="hudFps">-- FPS</span>
+                <span class="chip" id="hudMs">-- ms</span>
+                <span class="chip" id="hudDelegate">--</span>
+                <span class="chip" id="hudConf">tracking: --</span>
+              </div>
+
+              <div class="overlay" id="overlay" role="status" aria-live="polite">
+                <div class="card">
+                  <div class="icon" id="overlayIcon" aria-hidden="true">👕</div>
+                  <h3 id="overlayTitle">Ready when you are</h3>
+                  <p id="overlayText">Start your camera for a live try-on. Video is processed locally and never uploaded.</p>
+                  <div class="row" id="overlayActions">
+                    <button class="btn btn-primary" id="btnCamera" type="button">Start camera</button>
+                    <button class="btn btn-ghost" id="btnDemo" type="button">Try demo mannequin</button>
+                    <label class="btn btn-ghost" for="photoInput">Upload a photo</label>
+                  </div>
+                </div>
+              </div>
+              <div class="flash" id="flash"></div>
+            </div>
+
+            <div class="toolbar" role="toolbar" aria-label="Studio controls">
+              <button class="icon-btn" id="btnPrev" type="button" title="Previous shirt (A)" aria-label="Previous shirt">‹</button>
+              <button class="icon-btn" id="btnNext" type="button" title="Next shirt (D)" aria-label="Next shirt">›</button>
+              <span class="sep"></span>
+              <button class="tool" id="btnSnap" type="button" title="Save snapshot (S)">📸 <span>Snapshot</span></button>
+              <button class="tool" id="btnSkel" type="button" aria-pressed="false" title="Toggle skeleton (K)">🦴 <span>Skeleton</span></button>
+              <button class="tool" id="btnMirror" type="button" aria-pressed="true" title="Mirror view (M)">↔ <span>Mirror</span></button>
+              <button class="tool" id="btnFull" type="button" title="Fullscreen (F)">⛶ <span>Fullscreen</span></button>
+              <span class="grow"></span>
+              <button class="tool danger" id="btnStop" type="button" hidden>■ <span>Stop</span></button>
+            </div>
+          </div>
+
+          <aside class="panel" aria-label="Wardrobe and fit controls">
+            <div class="block">
+              <div class="block-head"><h3>Wardrobe</h3><span class="muted" id="shirtName">—</span></div>
+              <div class="grid" id="catalog" role="listbox" aria-label="Shirts"></div>
+              <label class="upload" for="shirtInput">
+                <span>＋ Add your own shirt</span>
+                <small>Transparent PNG / WebP, front view, flat-lay</small>
+              </label>
+              <input id="shirtInput" type="file" accept="image/png,image/webp,image/svg+xml" hidden />
+            </div>
+
+            <div class="block">
+              <div class="block-head"><h3>Fit</h3><button class="link" id="btnResetFit" type="button">Reset</button></div>
+              <label class="slider"><span>Size</span><output id="outSize">100%</output>
+                <input id="rngSize" type="range" min="70" max="140" value="100" /></label>
+              <label class="slider"><span>Length</span><output id="outLength">100%</output>
+                <input id="rngLength" type="range" min="70" max="140" value="100" /></label>
+              <label class="slider"><span>Height</span><output id="outOffset">-4</output>
+                <input id="rngOffset" type="range" min="-30" max="30" value="-4" /></label>
+              <label class="slider"><span>Opacity</span><output id="outOpacity">100%</output>
+                <input id="rngOpacity" type="range" min="40" max="100" value="100" /></label>
+            </div>
+
+            <div class="block">
+              <div class="block-head"><h3>Engine</h3></div>
+              <div class="seg" role="radiogroup" aria-label="Model">
+                <button type="button" role="radio" aria-checked="true" data-model="lite">Lite · fast</button>
+                <button type="button" role="radio" aria-checked="false" data-model="full">Full · accurate</button>
+              </div>
+              <label class="slider"><span>Smoothing</span><output id="outSmooth">Balanced</output>
+                <input id="rngSmooth" type="range" min="0" max="2" step="1" value="1" /></label>
+            </div>
+          </aside>
+        </div>
+        <input id="photoInput" type="file" accept="image/*" hidden />
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>Five stages, all running on-device at interactive frame rates.</p>
+        </div>
+        <ol class="pipeline">
+          <li><span class="n">1</span><h3>Capture</h3><p>WebRTC streams camera frames to a canvas. The view is mirrored like a real mirror.</p></li>
+          <li><span class="n">2</span><h3>Detect</h3><p>MediaPipe PoseLandmarker (WASM + GPU) returns 33 body landmarks per frame.</p></li>
+          <li><span class="n">3</span><h3>Stabilise</h3><p>A One Euro filter removes jitter when you are still and adds no lag when you move.</p></li>
+          <li><span class="n">4</span><h3>Fit</h3><p>An affine transform maps the garment's shoulder line and torso axis onto yours.</p></li>
+          <li><span class="n">5</span><h3>Render</h3><p>The garment is composited with soft shadow and a fade when tracking is lost.</p></li>
+        </ol>
+        <pre class="code" aria-label="Fitting code excerpt"><code><span class="c">// js/fit.js — the heart of the fit</span>
+<span class="k">const</span> sx = (shoulderWidth * size) / garmentSpan;           <span class="c">// scale along shoulders</span>
+<span class="k">const</span> sy = (shoulderWidth * torsoRatio * length) / garmentTorso; <span class="c">// stretch along torso</span>
+<span class="k">const</span> matrix = [ux*sx, uy*sx,  dirX*sy, dirY*sy,  e, f];       <span class="c">// rotate + scale + shear</span>
+ctx.setTransform(...matrix); ctx.drawImage(shirt, 0, 0);</code></pre>
+      </div>
+    </section>
+
+    <!-- ENGINEERING -->
+    <section id="engineering" class="eng">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Engineering highlights</h2>
+          <p>Built like a product, not a notebook.</p>
+        </div>
+        <div class="cards">
+          <article><h3>Robust to real use</h3><p>Hips out of frame? The fitter falls back to anatomical proportions. Tracking lost? The shirt fades out instead of flickering.</p></article>
+          <article><h3>Tested core</h3><p>All geometry is pure functions covered by a Node test-suite: anchor mapping, rotation, mirroring, filter behaviour.</p></article>
+          <article><h3>Zero backend</h3><p>Static files only. Deploys to GitHub Pages, Netlify or any CDN in seconds, scales to unlimited users at no server cost.</p></article>
+          <article><h3>Installable &amp; offline shell</h3><p>PWA manifest and service worker cache the app shell. Add it to your home screen or desktop.</p></article>
+          <article><h3>Bring your own garment</h3><p>Upload a transparent PNG; borders are auto-trimmed and anchors inferred. Fine-tune with the Fit controls.</p></article>
+          <article><h3>Accessible UI</h3><p>Keyboard shortcuts, ARIA live status, focus rings, reduced-motion support and responsive layout down to phones.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="privacy" class="privacy">
+      <div class="wrap">
+        <div class="privacy-card">
+          <h2>Your camera stays yours.</h2>
+          <p>Inference runs locally through WebAssembly and WebGL. There is no backend: frames are never recorded, uploaded or stored. Snapshots are saved only if you press the button, and only to your own device.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div>
+        <strong>TailorAI</strong> — built by <span data-author="name">Your Name</span>
+        <div class="muted" data-author="role"></div>
+      </div>
+      <div class="links">
+        <a data-link="github" href="#" target="_blank" rel="noopener">Source</a>
+        <a data-link="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a data-link="email" href="#" hidden>Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

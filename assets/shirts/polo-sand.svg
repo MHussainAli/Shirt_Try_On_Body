@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="720" viewBox="0 0 600 720">
+
+  <defs>
+    <linearGradient id="side-polo-sand" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".30"/>
+      <stop offset=".16" stop-color="#000" stop-opacity=".05"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity=".07"/>
+      <stop offset=".84" stop-color="#000" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".30"/>
+    </linearGradient>
+    <linearGradient id="fade-polo-sand" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".10"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".18"/>
+    </linearGradient>
+    <clipPath id="clip-polo-sand"><path d="M226,58 Q300,118 374,58 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z"/></clipPath>
+  </defs>
+  <path d="M226,58 Q300,118 374,58 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="#c9a46b"/>
+  <path d="M226,58 Q300,118 374,58 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="url(#side-polo-sand)"/>
+  <path d="M226,58 Q300,118 374,58 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="url(#fade-polo-sand)"/>
+  <g clip-path="url(#clip-polo-sand)" fill="none" stroke="#000" stroke-opacity=".08" stroke-width="5" stroke-linecap="round"><path d="M205,250 Q225,420 190,640"/><path d="M395,260 Q372,430 410,650"/><path d="M255,140 Q300,200 345,140" stroke-opacity=".05"/></g>
+  <path d="M226,58 Q300,118 374,58 Q300,76 226,58 Z" fill="#90764d"/>
+  <path d="M214,50 L300,132 L258,160 L186,82 Z" fill="#d2b485" stroke="#6e5a3a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M386,50 L300,132 L342,160 L414,82 Z" fill="#d2b485" stroke="#6e5a3a" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="287" y="128" width="26" height="130" rx="3" fill="#cca973" stroke="#6e5a3a" stroke-opacity=".6" stroke-width="2"/>
+  <circle cx="300" cy="156" r="5" fill="#e1ccad" stroke="#6e5a3a" stroke-width="1.5"/>
+  <circle cx="300" cy="190" r="5" fill="#e1ccad" stroke="#6e5a3a" stroke-width="1.5"/>
+  <circle cx="300" cy="224" r="5" fill="#e1ccad" stroke="#6e5a3a" stroke-width="1.5"/>
+  <path d="M133,672 Q300,694 467,672" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="7 5"/>
+  <path d="M582,222 L526,262" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M18,222 L74,262" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M226,58 Q300,118 374,58 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="none" stroke="#6e5a3a" stroke-opacity=".75" stroke-width="3" stroke-linejoin="round"/>
+</svg>

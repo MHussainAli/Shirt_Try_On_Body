@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "tee-navy",
+      "name": "Classic Tee",
+      "category": "T-Shirt",
+      "swatch": "#24427a",
+      "src": "assets/shirts/tee-navy.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    },
+    {
+      "id": "tee-crimson",
+      "name": "Crimson Crew",
+      "category": "T-Shirt",
+      "swatch": "#b3262f",
+      "src": "assets/shirts/tee-crimson.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    },
+    {
+      "id": "tee-forest",
+      "name": "Forest Tee",
+      "category": "T-Shirt",
+      "swatch": "#2f6f4e",
+      "src": "assets/shirts/tee-forest.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    },
+    {
+      "id": "tee-white",
+      "name": "Essential White",
+      "category": "T-Shirt",
+      "swatch": "#eeece6",
+      "src": "assets/shirts/tee-white.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    },
+    {
+      "id": "tee-black",
+      "name": "Midnight Tee",
+      "category": "T-Shirt",
+      "swatch": "#1a1b21",
+      "src": "assets/shirts/tee-black.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    },
+    {
+      "id": "stripe-breton",
+      "name": "Breton Stripe",
+      "category": "Striped",
+      "swatch": "#f1eee6",
+      "src": "assets/shirts/stripe-breton.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    },
+    {
+      "id": "polo-teal",
+      "name": "Performance Polo",
+      "category": "Polo",
+      "swatch": "#12808b",
+      "src": "assets/shirts/polo-teal.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    },
+    {
+      "id": "polo-sand",
+      "name": "Resort Polo",
+      "category": "Polo",
+      "swatch": "#c9a46b",
+      "src": "assets/shirts/polo-sand.svg",
+      "size": [
+        600,
+        720
+      ],
+      "anchors": {
+        "sl": [
+          130,
+          100
+        ],
+        "sr": [
+          470,
+          100
+        ],
+        "hipY": 570
+      }
+    }
+  ]
+}

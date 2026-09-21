@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="720" viewBox="0 0 600 720">
+
+  <defs>
+    <linearGradient id="side-tee-white" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".30"/>
+      <stop offset=".16" stop-color="#000" stop-opacity=".05"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity=".07"/>
+      <stop offset=".84" stop-color="#000" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".30"/>
+    </linearGradient>
+    <linearGradient id="fade-tee-white" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".10"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".18"/>
+    </linearGradient>
+    <clipPath id="clip-tee-white"><path d="M230,60 Q300,150 370,60 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z"/></clipPath>
+  </defs>
+  <path d="M230,60 Q300,150 370,60 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="#eeece6"/>
+  <path d="M230,60 Q300,150 370,60 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="url(#side-tee-white)"/>
+  <path d="M230,60 Q300,150 370,60 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="url(#fade-tee-white)"/>
+  <g clip-path="url(#clip-tee-white)" fill="none" stroke="#000" stroke-opacity=".08" stroke-width="5" stroke-linecap="round"><path d="M205,250 Q225,420 190,640"/><path d="M395,260 Q372,430 410,650"/><path d="M255,140 Q300,200 345,140" stroke-opacity=".05"/></g>
+  <path d="M230,60 Q300,150 370,60 Q300,84 230,60 Z" fill="#aba9a5"/>
+  <path d="M230,60 Q300,150 370,60" fill="none" stroke="#d1cfca" stroke-width="10" stroke-linecap="round"/>
+  <path d="M236,66 Q300,150 364,66" fill="none" stroke="#fff" stroke-opacity=".10" stroke-width="2"/>
+  <path d="M133,672 Q300,694 467,672" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="7 5"/>
+  <path d="M582,222 L526,262" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M18,222 L74,262" stroke="#000" stroke-opacity=".28" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M230,60 Q300,150 370,60 L470,92 L588,214 L530,270 L470,222 L470,690 Q300,712 130,690 L130,222 L70,270 L12,214 L130,92 Z" fill="none" stroke="#82817e" stroke-opacity=".75" stroke-width="3" stroke-linejoin="round"/>
+</svg>
